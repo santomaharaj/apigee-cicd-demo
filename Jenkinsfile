@@ -1,6 +1,5 @@
 #!groovy
 
-@Library('slackNotifications-shared-library@master') _
 
 pipeline {
     agent any
@@ -18,7 +17,6 @@ pipeline {
     stages {
         stage('Initial-Checks') {
             steps {
-                sendNotifications 'STARTED'
                 bat "npm -v"
                 bat "mvn -v"
                 echo "$apigeeUsername"
@@ -89,7 +87,7 @@ pipeline {
     post {
         always {
             // cucumberSlackSend channel: 'apigee-cicd', json: '$WORKSPACE/reports.json'
-            sendNotifications currentBuild.result
+            echo currentBuild.result
         }
     }
 }
