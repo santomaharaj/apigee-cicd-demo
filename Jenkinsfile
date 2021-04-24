@@ -11,13 +11,13 @@ pipeline {
 
     environment {
         //getting the current stable/deployed revision...this is used in undeloy.sh in case of failure...
-        echo "Completed Tools Initialiation"
         stable_revision = sh(script: 'curl -H "Authorization: Basic $base64encoded" "https://api.enterprise.apigee.com/v1/organizations/santoapigeetrail1-eval/apis/HR-API/deployments" | jq -r ".environment[0].revision[0].name"', returnStdout: true).trim()
     }
 
     stages {
         stage('Initial-Checks') {
             steps {
+                echo "Completed Tools Initialiation and Environment initialization"
                 bat "npm -v"
                 bat "mvn -v"
                 echo "$apigeeUsername"
