@@ -25,7 +25,7 @@ pipeline {
         }}  
         stage('Policy-Code Analysis') {
             steps {
-                bat "npm install -g apigeelint"
+                //bat "npm install -g apigeelint"
                 bat "apigeelint -s HR-API/apiproxy/ -f codeframe.js"
             }
         }
