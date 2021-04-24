@@ -7,6 +7,7 @@ pipeline {
         maven 'M2'
         jdk 'JDK'
         nodejs 'NODEJS'
+        echo "Completed Tools Initialization"
     }
 
     environment {
