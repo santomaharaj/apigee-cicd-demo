@@ -6,10 +6,9 @@ pipeline {
     tools {
         maven 'M2'
         jdk 'JDK'
-        nodejs 'NODEJS'
-        echo "Completed Tools Initialization"
+        nodejs 'NODEJS'        
     }
-
+    echo "Completed Tools Initialiation"
     environment {
         //getting the current stable/deployed revision...this is used in undeloy.sh in case of failure...
         stable_revision = sh(script: 'curl -H "Authorization: Basic $base64encoded" "https://api.enterprise.apigee.com/v1/organizations/santoapigeetrail1-eval/apis/HR-API/deployments" | jq -r ".environment[0].revision[0].name"', returnStdout: true).trim()
