@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo "Inside Revision.sh"
 revision_info=$(curl -H "Authorization: Basic $base64encoded" "https://api.enterprise.apigee.com/v1/organizations/santoapigeetrail1-eval/apis/HR-API/deployments") 
 
 previous_revision_number=$(jq -r .environment[0].revision[0].name <<< "${revision_info}" ) 
